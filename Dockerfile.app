@@ -30,6 +30,15 @@ RUN apt update -y && \
     chmod +x /usr/local/bin/docker-compose && \
     echo "Docker installed"
 
+# Skype
+RUN apt-get update \
+	&& apt-get install -y sudo gnupg2
+RUN curl -s https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
+RUN echo "deb https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skypeforlinux.list
+RUN apt update -y && \
+    apt install -y skypeforlinux && \
+    echo "Skype installed"
+
 # customize which gui application to run
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends wget keepassxc firefox-esr && \
@@ -44,15 +53,6 @@ RUN apt-get update -y &&  apt install -y --no-install-recommends firefox-esr && 
 
 # adds chromium 
 RUN apt-get update -y &&  apt install -y --no-install-recommends chromium chromium-sandbox && rm -rf /var/lib/apt/lists
-
-# adds keepassxc (in case I need to use my credentials)
-RUN apt-get update -y &&  apt install -y --no-install-recommends keepassxc && rm -rf /var/lib/apt/lists
-
-# install bitwarden too
-RUN wget https://github.com/bitwarden/desktop/releases/download/v1.29.1/Bitwarden-1.29.1-amd64.deb -P /tmp && \
-    dpkg -i /tmp/Bitwarden-1.29.1-amd64.deb && \
-    rm -rf /tmp/Bitwarden-1.29.1-amd64.deb
-
 
 # install vscode (for smooth remote container development)
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \

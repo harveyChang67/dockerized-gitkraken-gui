@@ -7,6 +7,8 @@ and do some changes:
 - golang:1.14-buster to `golang:1.16-buster`
 - Add DataGrip
 - Move out DataGrip, GoLand and IdeaUI from dockerfile
+- Add Skype
+- Remove `Keepassxc`, `BitWarden`
 
 1. Download DataGrip, GoLand and IdeaUI,
 2. Move to app,

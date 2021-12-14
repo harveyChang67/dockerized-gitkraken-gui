@@ -16,17 +16,6 @@
                 <execute>/usr/bin/chromium</execute>
             </action>
         </item>
-
-        <item label="KeepassXC">
-            <action name="Execute">
-                <execute>/usr/bin/keepassxc</execute>
-            </action>
-        </item>
-        <item label="Bitwarden">
-            <action name="Execute">
-                <execute>/usr/bin/bitwarden</execute>
-            </action>
-        </item>
         <item label="DataGrip">
             <action name="Execute">
                 <execute>/opt/datagrip/bin/datagrip.sh</execute>
@@ -65,6 +54,11 @@
         <item label="Taskbar">
             <action name="Execute">
                 <execute>/usr/bin/tint2</execute>
+            </action>
+        </item>
+        <item label="Skype">
+            <action name="Execute">
+                <execute>/usr/bin/skypeforlinux</execute>
             </action>
         </item>
     </menu>
