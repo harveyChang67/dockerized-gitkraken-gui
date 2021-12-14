@@ -27,6 +27,11 @@
                 <execute>/usr/bin/bitwarden</execute>
             </action>
         </item>
+        <item label="DataGrip">
+            <action name="Execute">
+                <execute>/opt/datagrip/bin/datagrip.sh</execute>
+            </action>
+        </item>
         <item label="GitKraken">
             <action name="Execute">
                 <execute>/usr/bin/gitkraken</execute>

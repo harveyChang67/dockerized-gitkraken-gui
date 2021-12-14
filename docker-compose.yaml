@@ -10,30 +10,32 @@ services:
       context: .
       dockerfile: Dockerfile.app
     volumes:
+      - ./app/DataGrip-2021.3.1:/opt/datagrip
+      - ./app/GoLand-2021.3:/opt/GoLand
+      - ./app/idea-IU-213.5744.223:/opt/ideaIU
       - /home/dporto/devel:/data
       - /home/dporto/nas:/datanas
       - /mnt/nas:/mnt/nas
       - /var/run/docker.sock:/var/run/docker.sock
-
-  # samba:
-  #   image: dperson/samba
-  #   environment:
-  #     - USERID=1097
-  #     - GROUPID=1145
-  #   ports:
-  #     - 139:139
-  #     - 445:445
-  #   # https://hub.docker.com/r/dperson/samba
-  #   command:  -u "dporto;kaioken;" -s "devel;/data;yes;no;no;dporto"
-  #   volumes:
-  #           - /home/dporto/devel:/data
+  samba:
+    image: dperson/samba
+    environment:
+      - USERID=1097
+      - GROUPID=1145
+    ports:
+      - 139:139
+      - 445:445
+    # https://hub.docker.com/r/dperson/samba
+    command:  -u "dporto;kaioken;" -s "devel;/data;yes;no;no;dporto"
+    volumes:
+            - /home/dporto/devel:/data
   caddy:
     build:
       context: .
       dockerfile: Dockerfile.caddy
     environment:
       - APP_USERNAME=dporto
-      - APP_PASSWORD_HASH=JDJhJDEwJGZadnZ1eUdjakhtR0V0WlNuSmFhWHVSRUZEblpuLi9QQXl6MjMwRFpQL05HSWZKS3MwNjZl
+      - APP_PASSWORD_HASH=JDJhJDEwJEVKM0FhUTJvdkdIb2VZdkE0WVhMWS5WMFlkSW5TZTAuL0R4Z3NYdGx1NmgxdmVVVUhUMUhh
       # compute the password with docker run --rm -it gitkraken-remote_caddy caddy hash-password -plaintext 'aaa'
       # aaa : JDJhJDEwJEVKM0FhUTJvdkdIb2VZdkE0WVhMWS5WMFlkSW5TZTAuL0R4Z3NYdGx1NmgxdmVVVUhUMUhh
       # - APP_PASSWORD_HASH=JDJhJDEwJEZrSllrdEF5a3F5TjNsU2hXYW1ub2V2TFBWTC5YbTJYeWpIRWI3YW5wMzVlTGRkeURLM2Qu

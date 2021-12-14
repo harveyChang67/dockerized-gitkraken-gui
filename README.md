@@ -1,20 +1,13 @@
 # dockerized-gitkraken-gui
-An example of how to embed a graphic  application into a docker container and access it via browser or vnc
 
-This is useful to run gui applications that scan the disk and performs poorly when run over remote drives.
+Fork from [danielporto/dockerized-gitkraken-gui](https://github.com/danielporto/dockerized-gitkraken-gui),
+and do some changes:
 
-To run, simply clone this repository and execute 
-docker-compose up
-access gitkraken via web browser: machine:8080  (http://localhost:8080)
+- debian:buster to `debian:buster-slim`
+- golang:1.14-buster to `golang:1.16-buster`
+- Add DataGrip
+- Move out DataGrip, GoLand and IdeaUI from dockerfile
 
- the directory data is mounted into the containers.
- If you want to change it, change in the docker-compose volumes.
-
- To change application, review the Dockerfile.app, superfisord.conf and menu.xml and change it accordingly.
- 
-
- Known issues:
- Change the UID and GID in both dockerfiles to match ours otherwise you wont be able to write on the volume
-
-
- CHANGE SAMBA PASSWORD
+1. Download DataGrip, GoLand and IdeaUI,
+2. Move to app,
+3. Edit `menu.xml`
