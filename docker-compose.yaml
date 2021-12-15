@@ -17,6 +17,7 @@ services:
       - /home/dporto/nas:/datanas
       - /mnt/nas:/mnt/nas
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/share_data
   samba:
     image: dperson/samba
     environment:
