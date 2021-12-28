@@ -39,6 +39,9 @@ RUN apt update -y && \
     apt install -y skypeforlinux && \
     echo "Skype installed"
 
+COPY ./install_apps.sh /install_apps.sh
+RUN ./install_apps.sh
+
 # customize which gui application to run
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends wget keepassxc firefox-esr && \

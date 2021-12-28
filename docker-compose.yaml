@@ -7,14 +7,15 @@ services:
       context: .
       dockerfile: Dockerfile.app
     volumes:
-      - ./app/DataGrip-2021.3.1:/opt/datagrip:rw
-      - ./app/GoLand-2021.3:/opt/GoLand:rw
-      - ./app/idea-IU-213.5744.223:/opt/ideaIU:rw
+      - ./app/DataGrip:/opt/datagrip:rw
+      - ./app/GoLand:/opt/GoLand:rw
+      - ./app/ideaIU:/opt/ideaIU:rw
       - ./data:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dporto/nas:/datanas
       - /mnt/nas:/mnt/nas
-
+      - ./install_apps.sh:/install_apps.sh
+      - /workspace:/workspace
   samba:
     image: dperson/samba
     environment:
@@ -27,21 +28,19 @@ services:
     command:  -u "dporto;kaioken;" -s "devel;/data;yes;no;no;dporto"
     volumes:
       - ./data:/data
-
   caddy:
     build:
       context: .
       dockerfile: Dockerfile.caddy
     environment:
-      - APP_USERNAME=dporto
+      - APP_USERNAME=harvey
       - APP_PASSWORD_HASH=JDJhJDEwJEVKM0FhUTJvdkdIb2VZdkE0WVhMWS5WMFlkSW5TZTAuL0R4Z3NYdGx1NmgxdmVVVUhUMUhh
       # compute the password with docker run --rm -it gitkraken-remote_caddy caddy hash-password -plaintext 'aaa'
       # aaa : JDJhJDEwJEVKM0FhUTJvdkdIb2VZdkE0WVhMWS5WMFlkSW5TZTAuL0R4Z3NYdGx1NmgxdmVVVUhUMUhh
       # - APP_PASSWORD_HASH=JDJhJDEwJEZrSllrdEF5a3F5TjNsU2hXYW1ub2V2TFBWTC5YbTJYeWpIRWI3YW5wMzVlTGRkeURLM2Qu
- 
     volumes:
       - ./data:/data
     ports:
-      - 8181:8080
+      - 8864:8080
 
 
