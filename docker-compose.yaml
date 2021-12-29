@@ -14,8 +14,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dporto/nas:/datanas
       - /mnt/nas:/mnt/nas
-      - ./install_jetbrains.sh:/install_jetbrains.sh
-    command: /bin/sh -c "/install_jetbrains.sh && tail -f /dev/null"
+      - ./install_apps.sh:/install_apps.sh
+      - /workspace:/workspace
   samba:
     image: dperson/samba
     environment:
@@ -41,6 +41,6 @@ services:
     volumes:
       - ./data:/data
     ports:
-      - 8181:8080
+      - 8864:8080
 
 
