@@ -18,7 +18,7 @@
         </item>
         <item label="DataGrip">
             <action name="Execute">
-                <execute>/opt/datagrip/bin/datagrip.sh</execute>
+                <execute>/opt/Datagrip/bin/datagrip.sh</execute>
             </action>
         </item>
         <item label="GitKraken">

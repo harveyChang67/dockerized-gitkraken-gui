@@ -13,3 +13,7 @@ and do some changes:
 1. Download DataGrip, GoLand and IdeaUI,
 2. Move to app,
 3. Edit `menu.xml`
+
+Updated:
+1. run docker
+2. run /src/install_apps.sh in app container

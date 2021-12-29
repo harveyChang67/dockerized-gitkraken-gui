@@ -7,14 +7,12 @@ services:
       context: .
       dockerfile: Dockerfile.app
     volumes:
-      - ./app/DataGrip:/opt/datagrip:rw
-      - ./app/GoLand:/opt/GoLand:rw
-      - ./app/ideaIU:/opt/ideaIU:rw
+      - ./app:/opt:rw
       - ./data:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dporto/nas:/datanas
       - /mnt/nas:/mnt/nas
-      - ./install_apps.sh:/install_apps.sh
+      - ./install_apps.sh:/src/install_apps.sh
       - /workspace:/workspace
   samba:
     image: dperson/samba

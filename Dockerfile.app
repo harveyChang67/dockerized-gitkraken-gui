@@ -30,45 +30,6 @@ RUN apt update -y && \
     chmod +x /usr/local/bin/docker-compose && \
     echo "Docker installed"
 
-# Skype
-RUN apt-get update \
-	&& apt-get install -y sudo gnupg2
-RUN curl -s https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
-RUN echo "deb https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skypeforlinux.list
-RUN apt update -y && \
-    apt install -y skypeforlinux && \
-    echo "Skype installed"
-
-COPY ./install_apps.sh /install_apps.sh
-RUN ./install_apps.sh
-
-# customize which gui application to run
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends wget keepassxc firefox-esr && \
-    wget https://release.gitkraken.com/linux/gitkraken-amd64.deb  -P /tmp && \
-    apt install -y gconf2 gconf-service libgtk2.0-0 libnotify4 libnss3 gvfs-bin xdg-utils libxss1 libasound2 procps libgbm-dev && \
-    dpkg -i /tmp/gitkraken-amd64.deb && \
-    rm -rf /tmp/gitkraken-amd64.deb && \
-    rm -rf /var/lib/apt/lists
-
-# adds firefox (sometimes required to authenticate with gitkraken tokens)
-RUN apt-get update -y &&  apt install -y --no-install-recommends firefox-esr && rm -rf /var/lib/apt/lists
-
-# adds chromium 
-RUN apt-get update -y &&  apt install -y --no-install-recommends chromium chromium-sandbox && rm -rf /var/lib/apt/lists
-
-# install vscode (for smooth remote container development)
-RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
-    && install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ \
-    && sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' \
-    && apt update \
-    && apt install -y apt-transport-https \
-    && apt install code \
-    && rm -rf /var/lib/apt/lists
-
-# adds meld - gui diff tool 
-RUN apt-get update -y &&  apt install -y --no-install-recommends meld && rm -rf /var/lib/apt/lists
-
 # configure vnc and supervisord
 COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
 COPY menu.xml /etc/xdg/openbox/
@@ -113,6 +74,5 @@ RUN asdf plugin-add golang https://github.com/kennyp/asdf-golang.git && \
     echo "Golang installed"
 
 USER root
-
 
 CMD ["sh", "-c", "chown app:app /data /dev/stdout && exec gosu app supervisord"]
