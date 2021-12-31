@@ -7,9 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.app
     volumes:
-      - ./app/DataGrip:/opt/datagrip:rw
-      - ./app/GoLand:/opt/GoLand:rw
-      - ./app/ideaIU:/opt/ideaIU:rw
+      - ./app:/opt:rw
       - ./data:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dporto/nas:/datanas
