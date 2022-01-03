@@ -6,34 +6,19 @@
                 <execute>/usr/bin/x-terminal-emulator</execute>
             </action>
         </item>
-        <item label="Firefox">
-            <action name="Execute">
-                <execute>/usr/bin/firefox</execute>
-            </action>
-        </item>
-        <item label="Chromium">
-            <action name="Execute">
-                <execute>/usr/bin/chromium</execute>
-            </action>
-        </item>
-        <item label="DataGrip">
-            <action name="Execute">
-                <execute>/opt/Datagrip/bin/datagrip.sh</execute>
-            </action>
-        </item>
         <item label="GitKraken">
             <action name="Execute">
                 <execute>/usr/bin/gitkraken</execute>
             </action>
         </item>
-        <item label="meld">
-            <action name="Execute">
-                <execute>/usr/bin/meld</execute>
-            </action>
-        </item>
         <item label="VS Code">
             <action name="Execute">
                 <execute>/usr/bin/code</execute>
+            </action>
+        </item>
+        <item label="DataGrip">
+            <action name="Execute">
+                <execute>/opt/Datagrip/bin/datagrip.sh</execute>
             </action>
         </item>
         <item label="Goland">
@@ -44,6 +29,21 @@
         <item label="Intellij idea">
             <action name="Execute">
                 <execute>/opt/ideaIU/bin/idea.sh</execute>
+            </action>
+        </item>
+        <item label="Firefox">
+            <action name="Execute">
+                <execute>/usr/bin/firefox</execute>
+            </action>
+        </item>
+        <item label="Chromium">
+            <action name="Execute">
+                <execute>/usr/bin/chromium</execute>
+            </action>
+        </item>
+        <item label="meld">
+            <action name="Execute">
+                <execute>/usr/bin/meld</execute>
             </action>
         </item>
         <item label="Htop">
