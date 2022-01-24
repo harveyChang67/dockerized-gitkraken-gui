@@ -12,8 +12,8 @@ IDEA_VERSION=2021.1.3
 install_datagrip()
 {
     if [ -z "$(ls -A $DATAGRIP)" ]; then
-        wget https://download.jetbrains.com/datagrip/datagrip-${DATAGRIP_VERSION}.tar.gz
-        tar xvf datagrip-${DATAGRIP_VERSION}.tar.gz -C /opt
+        wget https://download.jetbrains.com/datagrip/datagrip-${DATAGRIP_VERSION}.tar.gz -P /opt
+        tar xvf /opt/datagrip-${DATAGRIP_VERSION}.tar.gz -C /opt
         rm -f datagrip-${DATAGRIP_VERSION}.tar.gz
         mkdir ${DATAGRIP}
         mv /opt/DataGrip-${DATAGRIP_VERSION}/* ${DATAGRIP}
@@ -28,8 +28,8 @@ install_datagrip()
 install_goland()
 {
     if [ -z "$(ls -A $GOLAND)" ]; then
-        wget https://download-cdn.jetbrains.com/go/goland-${GOLAND_VERSION}.tar.gz
-        tar xvf goland-${GOLAND_VERSION}.tar.gz -C /opt
+        wget https://download-cdn.jetbrains.com/go/goland-${GOLAND_VERSION}.tar.gz -P /opt
+        tar xvf /opt/goland-${GOLAND_VERSION}.tar.gz -C /opt
         rm -f goland-${GOLAND_VERSION}.tar.gz
         mkdir ${GOLAND}
         mv /opt/GoLand-${GOLAND_VERSION}/* ${GOLAND} 
@@ -44,8 +44,8 @@ install_goland()
 install_ideaiu()
 {
     if [ -z "$(ls -A $IDEAIU)" ]; then
-        wget https://download-cdn.jetbrains.com/idea/ideaIU-${IDEA_VERSION}.tar.gz
-        tar xvf ideaIU-${IDEA_VERSION}.tar.gz -C /opt
+        wget https://download-cdn.jetbrains.com/idea/ideaIU-${IDEA_VERSION}.tar.gz -P /opt
+        tar xvf /opt/ideaIU-${IDEA_VERSION}.tar.gz -C /opt
         rm -f ideaIU-${IDEA_VERSION}.tar.gz
         mkdir ${IDEAIU}
         mv /opt/idea-IU-211.7628.21/* ${IDEAIU}

@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.app
     volumes:
-      - ./app:/opt:rw
+      - ./app:/opt:z
       - ./data:/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dporto/nas:/datanas

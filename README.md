@@ -11,7 +11,8 @@ and there are some changes:
 
 Usage:
 1. run docker-compose
-2. run /src/install_apps.sh in `app` container
+2. Notice 【LF】 not 【CRLF】
+3. run /src/install_apps.sh in `app` container
 
 PS.
 Start the VSCode for the first time, 
